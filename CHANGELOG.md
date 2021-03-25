@@ -2,6 +2,6 @@
 
 All notable changes to `laravel-46elks-notification-channel` will be documented in this file.
 
-## 1.0.0 - 202X-XX-XX
+## 0.1.0 - 2021-03-25
 
-- initial release
+- initial dev release
