@@ -1,8 +1,8 @@
 # 46 Elks Laravel Notification Channel
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/grafstorm/laravel-46elks-notification-channel.svg?style=flat-square)](https://packagist.org/packages/grafstorm/laravel-46elks-notification-channel)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/grafstorm/laravel-46elks-notification-channel/run-tests?label=tests)](https://github.com/grafstorm/laravel-46elks-notification-channel/actions?query=workflow%3ATests+branch%3Amaster)
-[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/grafstorm/laravel-46elks-notification-channel/Check%20&%20fix%20styling?label=code%20style)](https://github.com/grafstorm/laravel-46elks-notification-channel/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amaster)
+[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/argia-andreas/laravel-46elks-notification-channel/run-tests?label=tests)](https://github.com/argia-andreas/laravel-46elks-notification-channel/actions?query=workflow%3ATests+branch%3Amaster)
+[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/argia-andreas/laravel-46elks-notification-channel/Check%20&%20fix%20styling?label=code%20style)](https://github.com/argia-andreas/laravel-46elks-notification-channel/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amaster)
 [![Total Downloads](https://img.shields.io/packagist/dt/grafstorm/laravel-46elks-notification-channel.svg?style=flat-square)](https://packagist.org/packages/grafstorm/laravel-46elks-notification-channel)
 
 
