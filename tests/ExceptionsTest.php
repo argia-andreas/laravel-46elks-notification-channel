@@ -20,7 +20,7 @@ class ExceptionsTest extends TestCase
         config(['46elks-notification-channel.user' => '::replace-with-test-user::']);
         config(['46elks-notification-channel.pass' => '::replace-with-test-pass']);
         config(['46elks-notification-channel.from' => 'sender']);
-        $sms = new SmsMessage('13123', '::message::');
+        $sms = (new SmsMessage())->to('abc')->line('::message::');
     }
 
     /** @test */
@@ -31,8 +31,7 @@ class ExceptionsTest extends TestCase
         config(['46elks-notification-channel.user' => '::replace-with-test-user::']);
         config(['46elks-notification-channel.pass' => '::replace-with-test-pass']);
         config(['46elks-notification-channel.from' => 'tolongsender']);
-        $sms = new SmsMessage('+461', '::message::');
-        FortySixElks::create($sms);
+        $sms = (new SmsMessage())->to('+461')->line('::message::');
     }
 
     /** @test */
@@ -43,8 +42,7 @@ class ExceptionsTest extends TestCase
         config(['46elks-notification-channel.user' => '::replace-with-test-user::']);
         config(['46elks-notification-channel.pass' => '::replace-with-test-pass']);
         config(['46elks-notification-channel.from' => '%abc']);
-        $sms = new SmsMessage('+461', '::message::');
-        FortySixElks::create($sms);
+        $sms = (new SmsMessage())->to('+461')->line('::message::');
     }
 
     /** @test */
@@ -55,8 +53,9 @@ class ExceptionsTest extends TestCase
         config(['46elks-notification-channel.user' => '::replace-with-test-user::']);
         config(['46elks-notification-channel.pass' => '::replace-with-test-pass']);
         config(['46elks-notification-channel.from' => 'sender']);
-        $sms = new SmsMessage('+461', '');
-        FortySixElks::create($sms);
+        $sms = (new SmsMessage())->to('+461');
+
+        FortySixElks::create($sms)->dryRun()->send();
     }
 
     /** @test */
@@ -65,7 +64,7 @@ class ExceptionsTest extends TestCase
         $this->expectException(ConfigException::class);
 
         config(['46elks-notification-channel.from' => 'sender']);
-        $sms = new SmsMessage('+461', '::message::');
+        $sms = (new SmsMessage())->to('+461')->line('::message::');
         FortySixElks::create($sms);
     }
 
@@ -77,7 +76,7 @@ class ExceptionsTest extends TestCase
         config(['46elks-notification-channel.user' => '::user::']);
         config(['46elks-notification-channel.pass' => '::pass::']);
         config(['46elks-notification-channel.from' => 'sender']);
-        $sms = new SmsMessage('+461', '::message::');
+        $sms = (new SmsMessage())->to('+461')->line('::message::');
         FortySixElks::create($sms)->dryRun()->send();
     }
 }

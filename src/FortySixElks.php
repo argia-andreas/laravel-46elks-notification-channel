@@ -3,14 +3,10 @@
 
 namespace Grafstorm\FortySixElksChannel;
 
-use Grafstorm\FortySixElksChannel\Validators\FromValidator;
-
 class FortySixElks
 {
     private string $shouldDryRun = 'no';
-    private string $from;
-    private string $to;
-    private string $message;
+    private SmsMessage $smsMessage;
     protected Client $client;
 
     public function __construct()
@@ -21,9 +17,7 @@ class FortySixElks
     public static function create(SmsMessage $message): static
     {
         $instance = new static;
-        $instance->from = FromValidator::validate(config('46elks-notification-channel.from'));
-        $instance->to = $message->to;
-        $instance->message = $message->message;
+        $instance->smsMessage = $message;
 
         return $instance;
     }
@@ -37,11 +31,9 @@ class FortySixElks
 
     public function send(): mixed
     {
-        return $this->client->sendSms([
-            'from' => $this->from,
-            'to' => $this->to,
-            'message' => $this->message,
-            'dryrun' => $this->shouldDryRun,
-        ]);
+        return $this->client->sendSms(array_merge(
+            $this->smsMessage->toArray(),
+            ['dryrun' => $this->shouldDryRun]
+        ));
     }
 }

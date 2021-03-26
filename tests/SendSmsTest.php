@@ -17,7 +17,7 @@ class SendSmsTest extends TestCase
         config(['46elks-notification-channel.user' => '::user::']);
         config(['46elks-notification-channel.pass' => '::password::']);
         config(['46elks-notification-channel.from' => 'sender']);
-        $sms = new SmsMessage('+461', '::message::');
+        $sms = (new SmsMessage())->to('+461')->line('::message::');
 
         $smsData = FortySixElks::create($sms)->dryRun()->send();
 
