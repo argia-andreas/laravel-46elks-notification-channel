@@ -5,6 +5,7 @@
 [![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/argia-andreas/laravel-46elks-notification-channel/Check%20&%20fix%20styling?label=code%20style)](https://github.com/argia-andreas/laravel-46elks-notification-channel/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amaster)
 [![Total Downloads](https://img.shields.io/packagist/dt/grafstorm/laravel-46elks-notification-channel.svg?style=flat-square)](https://packagist.org/packages/grafstorm/laravel-46elks-notification-channel)
 
+**Disclaimer: Not a finished package! If you are looking for a finished package to user for 46elks perhaps look at: https://github.com/laravel-notification-channels/46elks**
 
 Laravel SMS notification Channel for 46elks.se sms provider.
 
@@ -69,7 +70,12 @@ And be sure to add a `toFortySixElks` method that returns an array with the mobi
     {
         // Return a SmsMessage. Needs to and message.
         // To needs to be formatted as a [E.164](https://en.wikipedia.org/wiki/E.164) phonenumber. (Eg. +4612345678)
-        return new SmsMessage($notifiable->mobile,'Hello world!');
+        return (new SmsMessage())
+                ->from('developer')
+                ->to($notifiable->mobile)
+                ->line('Hello World')
+                ->line('')
+                ->line('Bye world.');
     }
 ```
 
@@ -79,7 +85,10 @@ You can also use the FortySixElks facade to send a message directly in your appl
 use Grafstorm\FortySixElksChannel\SmsMessage;
 use Grafstorm\FortySixElksChannel\Facades\FortySixElks;
 
-$message = new SmsMessage('+4612345678','Hello world!');
+$message = (new SmsMessage())
+                ->to('+461')
+                ->line('Hello World');
+                
 $sms = FortySixElks::create($message)->send();
 
 // Use dryRun() to test sending the message.
